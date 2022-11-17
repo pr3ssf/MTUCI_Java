@@ -5,6 +5,7 @@ public class AllInOne {
     public static void main(String [] args) {
 
         // 1 part
+        System.out.println("-----------Part 1-----------");
         System.out.println(remainder(-9,45));
         System.out.println(triArea(3, 2));
         System.out.println(animals(2, 3, 5));
@@ -17,6 +18,7 @@ public class AllInOne {
         System.out.println(abcmath(5, 2, 1));
 
         // 2 part
+        System.out.println("-----------Part 2-----------");
         System.out.println(repeat("mice", 5));
         System.out.println(differenceMaxMin(new int[] {10, 4, 1, 4, -10, -50, 32, 21}));
         System.out.println(isAvgWhole(new int[] {1, 3}));
@@ -30,6 +32,7 @@ public class AllInOne {
         System.out.println(boxSeq(5));
 
         // 3 part
+        System.out.println("-----------Part 3-----------");
         System.out.println(solutions(new int [] {1, 0, -1}));
         System.out.println(findZip("all zip files are zipped"));
         System.out.println(checkPerfect(496));
@@ -42,6 +45,7 @@ public class AllInOne {
         System.out.println(rightTriangle(new int [] {145, 105, 100}));
 
         // 4 part
+        System.out.println("-----------Part 4-----------");
         System.out.println(textProcessor("10 7 hello my name is Bessie and this is my essay"));
         System.out.println(split("((()))(())()()(()())"));
         System.out.println(toCamelCase("hello_edabit"));
@@ -290,7 +294,7 @@ public class AllInOne {
         int trigger = 0;
         int position = 0;
         for (int i=0; i<strToFind.length()-2; i++) {
-            if (((int) strToFind.charAt(i) == 122) && ((int) strToFind.charAt(i+1) == 105) && ((int) strToFind.charAt(i+2) == 112)) {
+            if (( strToFind.charAt(i) == 'z') && (strToFind.charAt(i+1) == 'i') && ( strToFind.charAt(i+2) == 'p')) {
                 trigger += 1;
                 position = i;
             }
@@ -307,8 +311,7 @@ public class AllInOne {
                 sum += i;
             }
         }
-        if (sum==number) {return true;}
-        else return false;
+        return sum==number;
     }
 
     // 24 solve
@@ -345,7 +348,7 @@ public class AllInOne {
         for (int i=0; i<arr2.length; i++) {
             set2.add(arr2[i]);
         }
-        return set1.size() == set2.size() ? true: false;
+        return set1.size() == set2.size();
     }
 
     // 27 solve
@@ -412,7 +415,7 @@ public class AllInOne {
         if (b>a) {a=args[1]; b=args[0];}
         if (c>a) {a=args[2]; c=args[1];}
         
-        return Math.pow(a, 2) == Math.pow(b, 2) + Math.pow(c, 2) ? true : false;
+        return Math.pow(a, 2) == Math.pow(b, 2) + Math.pow(c, 2);
     }
 
     // 31 solve
@@ -442,8 +445,8 @@ public class AllInOne {
         String outputLine = "";
         String currentLine = "";
         for (int i=0; i<line.length(); i++) {
-            if (line.charAt(i) == 40) {leftCase += 1; currentLine += line.substring(i, i+1);}
-            else if (line.charAt(i) == 41) {rightCase += 1; currentLine += line.substring(i, i+1);}
+            if (line.charAt(i) == '(') {leftCase += 1; currentLine += line.substring(i, i+1);}
+            else if (line.charAt(i) == ')') {rightCase += 1; currentLine += line.substring(i, i+1);}
 
             if (leftCase == rightCase) {
                 outputLine += currentLine + "\n";
@@ -550,6 +553,7 @@ public class AllInOne {
         int counter = 0;
         String line = lines + "0";
         for (int i=0; i<line.length()-1; i++) {
+            //add first char of secuence
             if (!line.substring(i, i+1).equals(line.substring(i+1, i+2)) && counter==0) {outputStr += line.substring(i, i+1);}
 
             else if (line.substring(i, i+1).equals(line.substring(i+1, i+2))) {
