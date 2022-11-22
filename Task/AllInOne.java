@@ -1,66 +1,84 @@
+import java.io.FileReader;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashSet;
 import java.util.Set;
+
+import javax.naming.NamingSecurityException;
+import javax.sql.rowset.spi.SyncResolver;
+import javax.swing.plaf.synth.SynthDesktopIconUI;
 
 public class AllInOne {
     public static void main(String [] args) {
 
         // 1 part
-        System.out.println("-----------Part 1-----------");
-        System.out.println(remainder(-9,45));
-        System.out.println(triArea(3, 2));
-        System.out.println(animals(2, 3, 5));
-        System.out.println(profitableGamble(0.2, 50, 9));
-        System.out.println(operation(24, 15, 9));
-        System.out.println(ctoa("\\"));
-        System.out.println(addUpTo(10));
-        System.out.println(nextEdge(8, 10));
-        System.out.println(sumOfCubes(new int[] {1, 5, 9}));
-        System.out.println(abcmath(5, 2, 1));
+        // System.out.println("-----------Part 1-----------");
+        // System.out.println(remainder(-9,45));
+        // System.out.println(triArea(3, 2));
+        // System.out.println(animals(2, 3, 5));
+        // System.out.println(profitableGamble(0.2, 50, 9));
+        // System.out.println(operation(24, 15, 9));
+        // System.out.println(ctoa("\\"));
+        // System.out.println(addUpTo(10));
+        // System.out.println(nextEdge(8, 10));
+        // System.out.println(sumOfCubes(new int[] {1, 5, 9}));
+        // System.out.println(abcmath(5, 2, 1));
 
-        // 2 part
-        System.out.println("-----------Part 2-----------");
-        System.out.println(repeat("mice", 5));
-        System.out.println(differenceMaxMin(new int[] {10, 4, 1, 4, -10, -50, 32, 21}));
-        System.out.println(isAvgWhole(new int[] {1, 3}));
-        System.out.println(cumulativeSum(new int[] {1, 2, 3}));
-        System.out.println(getDecimalPlaces("43.20"));
-        System.out.println(fibonacci(3));
-        System.out.println(isValid("853a7"));
-        System.out.println(isStrangePair("sparkling", "groups"));
-        System.out.println(isPrefix("automation", "auto-"));
-        System.out.println(isSuffix("arachnophobia", "-phobia"));
-        System.out.println(boxSeq(5));
+        // // 2 part
+        // System.out.println("-----------Part 2-----------");
+        // System.out.println(repeat("mice", 5));
+        // System.out.println(differenceMaxMin(new int[] {10, 4, 1, 4, -10, -50, 32, 21}));
+        // System.out.println(isAvgWhole(new int[] {1, 3}));
+        // System.out.println(cumulativeSum(new int[] {1, 2, 3}));
+        // System.out.println(getDecimalPlaces("43.20"));
+        // System.out.println(fibonacci(3));
+        // System.out.println(isValid("853a7"));
+        // System.out.println(isStrangePair("sparkling", "groups"));
+        // System.out.println(isPrefix("automation", "auto-"));
+        // System.out.println(isSuffix("arachnophobia", "-phobia"));
+        // System.out.println(boxSeq(5));
 
-        // 3 part
-        System.out.println("-----------Part 3-----------");
-        System.out.println(solutions(new int [] {1, 0, -1}));
-        System.out.println(findZip("all zip files are zipped"));
-        System.out.println(checkPerfect(496));
-        System.out.println(flipEndChars("Cat, dog, and mouse."));
-        System.out.println(isValidHexCode("#CD5C5C"));
-        System.out.println(same(new int [] {1, 3, 4, 4, 4}, new int [] {2, 5, 7}));
-        System.out.println(isKaprekar(297));
-        System.out.println(longestZero("01100001011000"));
-        System.out.println(nextPrime(24));
-        System.out.println(rightTriangle(new int [] {145, 105, 100}));
+        // // 3 part
+        // System.out.println("-----------Part 3-----------");
+        // System.out.println(solutions(new int [] {1, 0, -1}));
+        // System.out.println(findZip("all zip files are zipped"));
+        // System.out.println(checkPerfect(496));
+        // System.out.println(flipEndChars("Cat, dog, and mouse."));
+        // System.out.println(isValidHexCode("#CD5C5C"));
+        // System.out.println(same(new int [] {1, 3, 4, 4, 4}, new int [] {2, 5, 7}));
+        // System.out.println(isKaprekar(297));
+        // System.out.println(longestZero("01100001011000"));
+        // System.out.println(nextPrime(24));
+        // System.out.println(rightTriangle(new int [] {145, 105, 100}));
 
-        // 4 part
-        System.out.println("-----------Part 4-----------");
-        System.out.println(textProcessor("10 7 hello my name is Bessie and this is my essay"));
-        System.out.println(split("((()))(())()()(()())"));
-        System.out.println(toCamelCase("hello_edabit"));
-        System.out.println(toSnakeCase("getColor"));
-        System.out.println(overTime(new String [] {"9", "17", "30", "1.5"}));
-        //TODO: refact input
-        System.out.println(BMI(new String [] {"205", "pounds", "73", "inches"}));
-        System.out.println(bugger("999"));
-        System.out.println(toStarShorthand("77777geff"));
-        System.out.println(doesRhyme("Sam I am!", "Green eggs and ham."));
-        System.out.println(trouble("451999277", "41177722899"));
-        System.out.println(countUniqueBooks(new String [] {"AZYWABBCATTTA", "A"}));
+        // // 4 part
+        // System.out.println("-----------Part 4-----------");
+        // System.out.println(textProcessor("10 7 hello my name is Bessie and this is my essay"));
+        // System.out.println(split("((()))(())()()(()())"));
+        // System.out.println(toCamelCase("hello_edabit"));
+        // System.out.println(toSnakeCase("getColor"));
+        // System.out.println(overTime(new String [] {"9", "17", "30", "1.5"}));
+        // //TODO: refact input
+        // System.out.println(BMI(new String [] {"205", "pounds", "73", "inches"}));
+        // System.out.println(bugger("999"));
+        // System.out.println(toStarShorthand("77777geff"));
+        // System.out.println(doesRhyme("Sam I am!", "Green eggs and ham."));
+        // System.out.println(trouble("451999277", "41177722899"));
+        // System.out.println(countUniqueBooks(new String [] {"AZYWABBCATTTA", "A"}));
 
-
-
+        // 5 part 
+        System.out.println("-----------Part 5-----------");
+        System.out.println(encrypt("Hi there!"));
+        System.out.println(decrypt("72, 33, -73, 84, -12, -3, 13, -13, -68"));
+        System.out.println(canMove("Bishop", "A7", "G1"));
+        System.out.println(canComplete("beautiful", "beautiful"));
+        System.out.println(sumDigProd(new int[] {16, 28}));
+        System.out.println(sameVowelGroup(new String[] {"toe", "ocelot", "maniac"}));
+        System.out.println(validateCard(1234567890123456l));
+        System.out.println(numToEng(10));
+        System.out.println(getSha256Hash("password123"));
+        System.out.println(correctTitle("jOn SnoW, kINg IN thE noRth."));
+        System.out.println(hexLattice(20));
     }
 
     // 1 solve
@@ -614,5 +632,292 @@ public class AllInOne {
             }
         }
         return s.size()-1;
+    }
+
+    //41 solve 
+    private static String encrypt(String args) {
+        String outputString = String.valueOf((int) args.charAt(0));
+        for (int i=1; i<args.length(); i++) {
+            outputString += " " + (args.charAt(i) - args.charAt(i-1));
+        }
+        return outputString;
+    }
+
+    private static String decrypt(String args) {
+        String[] toDecr = args.split(", ");
+        //char firstLetter = (char)Integer.parseInt(toDecr[0]);
+        String outputString = "";
+        
+        for (int i=0; i<toDecr.length+1; i++) {
+            int letter = 0;
+            for (int j=0; j<i; j++) {
+                letter += Integer.parseInt(toDecr[j]);
+            }
+            outputString += (char) letter;
+        }
+        return outputString;
+    }
+
+    //42 solve TODO: refact
+    private static boolean canMove(String p, String c, String t) {
+        // пешка +
+        if (p.equals("pawn")) {
+            if (c.charAt(0) == t.charAt(0)) {
+
+                if (c.charAt(1) == '2' && t.charAt(1) == '4') {
+                    return true;
+                }
+
+                if (c.charAt(1) == '7' && t.charAt(1) == '5') {
+                    return true;
+                }
+
+                if (Math.abs((int) c.charAt(1) - (int) t.charAt(1)) == 1) {
+                    return true;
+                }
+            }
+        }
+
+        //слон +
+        if (p.equals("bishop")) {
+            if (Math.abs((int) c.charAt(0) - (int) t.charAt(0)) == Math.abs((int) c.charAt(1) - (int) t.charAt(1))) {
+                return true;
+            }
+        }
+
+        //ладья +
+        if (p.equals("rook")) {
+            if (c.charAt(0) == t.charAt(0) || c.charAt(1) == t.charAt(1)) {
+                return true;
+            }
+        }
+
+        //конь +
+        if (p.equals("knight")) {
+
+            if (Math.abs((int) c.charAt(0) - (int) t.charAt(0)) == 2 && Math.abs((int) c.charAt(1) - (int) t.charAt(1)) == 1) {
+                return true;
+            }
+
+            if (Math.abs((int) c.charAt(1) - (int) t.charAt(1)) == 2 && Math.abs((int) c.charAt(0) - (int) t.charAt(0)) == 1) {
+                return true;
+            }
+        }
+
+        //король
+        if (p.equals("king")) {
+            if (Math.abs((int) c.charAt(0) - (int) t.charAt(0)) <= 1 && Math.abs((int) c.charAt(1) - (int) t.charAt(1)) <= 1) {
+                return true;
+            }
+        }
+
+        //королева
+        if (p.equals("queen")) {
+            if (Math.abs((int) c.charAt(0) - (int) t.charAt(0)) == Math.abs((int) c.charAt(1) - (int) t.charAt(1))) {
+                return true;
+            }
+
+            if (c.charAt(0) == t.charAt(0) || c.charAt(1) == t.charAt(1)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    //43 solve
+    private static Boolean canComplete(String small, String full) {
+        int flag = 0;
+        for (int i=0; i<full.length(); i++) {
+            if (small.charAt(flag) == full.charAt(i))
+                flag++;
+        }
+        if (flag == small.length())
+            return true;
+        else 
+            return false;
+    }
+
+    //44 solve 
+    private static int sumDigProd(int[] args) {
+        int sum = 0;
+        for (int i = 0; i<args.length;i++)
+            sum += args[i];
+        
+        while (sum>9) {
+            String num = Integer.toString(sum);
+            sum = 1;
+            for (int i = 0; i<num.length();i++) {
+                sum *= Integer.parseInt(String.valueOf(num.charAt(i)));
+            }
+        }
+        return sum;
+    }
+
+    //45 solve 
+    private static String sameVowelGroup(String [] args) {
+        String outputString = "";
+        char[] firsChars = args[0].toCharArray();
+        Set<Character> vow = new HashSet<>();
+        for (char _let : firsChars) {
+            if (_let == 'a' || _let == 'e' || _let == 'i' || _let == 'o' || _let == 'u' || _let == 'y') {
+                vow.add(_let);
+            }
+        }
+
+        for (String _str : args) {
+            boolean flag = true;
+            for (char _let : _str.toCharArray()) {
+                if (_let == 'a' || _let == 'e' || _let == 'i' || _let == 'o' || _let == 'u' || _let == 'y') {
+                    if (!vow.contains(_let)) {
+                        flag = false;
+                        break;
+                    }
+                }
+            }
+            if (flag) {outputString += _str + " ";}
+        }
+        return outputString;
+    }
+
+    //46 solve
+    private static Boolean validateCard(Long number) {
+
+        int numLength = String.valueOf(number).length();
+        if ((numLength<14) || (numLength>19)) {return false;}
+        
+        int lastN = (int) (number%10);
+        number /= 10;
+        StringBuilder strNumber = new StringBuilder(String.valueOf(number)).reverse();
+
+        int currChange = 0;
+        for (int i = 0; i < strNumber.length(); i += 2) {
+            currChange = Integer.parseInt(strNumber.charAt(i) + "") * 2;
+            
+            strNumber.replace(i, i + 1, String.valueOf(currChange));
+        }
+        currChange = 0;
+        for (char x : strNumber.toString().toCharArray()) {
+            currChange += Integer.parseInt(x + "");
+        }
+
+        return ((10 - (currChange % 10)) == lastN);
+    }   
+
+    //47 solve 
+    private static String numToEng(int n) {
+        String[] d0_9 = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
+        String[] d10_19 = { "ten", "eleven", "twelve", "thirten", "fourten", "fifteen", "sixteen", "seventeen", "eighten", "nineteen" };
+        String[] d20_90 = { "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety" };
+        String num = Integer.toString(n);
+
+        int dCount = num.length();
+        
+        if (dCount == 1) {return d0_9[Integer.parseInt(num)];}
+        if ((dCount == 2) && (n < 20)) {return d10_19[Integer.parseInt(num.substring(1, 2))];}
+        if ((dCount == 2) && (num.charAt(1) == '0') && (n>19)) {return d20_90[Integer.parseInt(num.substring(0, 1))-1];} 
+        if (dCount == 3) {
+            StringBuilder sb = new StringBuilder();
+            int[] digits = new int[3];
+            int k = 0;
+            while (n != 0) {
+                digits[k] = n % 10;
+                n = n / 10;
+                k++;
+            }
+            sb.append(d0_9[digits[2]]).append(" hundred ");
+            if (digits[1] == 1) {
+                int c = digits[1] + digits[2];
+                sb.append(d10_19[c]);
+                return sb.toString();
+            }
+            if (digits[1] > 1)
+                sb.append(d20_90[digits[1] - 1]).append(" ");
+            if (digits[0] > 0)
+                sb.append(d0_9[digits[0]]);
+            return sb.toString();
+        }
+        return "";
+    }
+
+    //48 solve
+    private static String getSha256Hash(String msg) {
+        String result = "";
+        MessageDigest md;
+        try {
+            md = MessageDigest.getInstance("SHA-256");
+            byte[] hashes = md.digest(msg.getBytes());
+            for (int i = 0; i < hashes.length; i++) {
+                String hex = Integer.toHexString(0xff & hashes[i]);
+                if (hex.length() == 1)
+                    result += 0;
+                result += hex;
+            }
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    //49 solve
+    private static String correctTitle(String str) {
+        String[] strings = str.split(" ");
+        String output = "";
+
+        for (int i = 0; i < strings.length; i++) {
+            if (i > 0) {
+                output += " ";
+            }
+            String[] _strings = strings[i].split("-");
+            for (int j = 0; j < _strings.length; j++) {
+                if (j > 0) {
+                    output += "-";
+                }
+                if (_strings[j].equalsIgnoreCase("and")
+                        || _strings[j].equalsIgnoreCase("the")
+                        || _strings[j].equalsIgnoreCase("of")
+                        || _strings[j].equalsIgnoreCase("in")) {
+                    output += _strings[j].toLowerCase();
+                } else {
+                    output += _strings[j].substring(0, 1).toUpperCase();
+                    output += _strings[j].substring(1).toLowerCase();
+                }
+            }
+        }
+
+        return output;
+    }
+
+    //50 solve
+    private static String hexLattice(int n) {
+        int i = 0;
+        boolean isHex = false;
+        while (3 * i * (i + 1) + 1 <= n) {
+            if (3 * i * (i + 1) + 1 == n)
+                isHex = true;
+            i++;
+        }
+        String str = "";
+        if (isHex) {
+            int l = i;
+            int m = i;
+            String str2;
+            for (int j = 0; j < 2 * i - 1; j++) {
+                str += "\n";
+                str2 = "";
+                for (int k = 1; k < m; k++) {
+                    str2 += " ";
+                }
+                str += str2;
+                for (int k = 0; k < l; k++) {
+                    str += " o";
+                }
+                str += str2 + " ";
+                l += (j < i - 1) ? 1 : -1;
+                m += (j < i - 1) ? -1 : 1;
+            }
+            str = str.replaceFirst("\n", "");
+            return str;
+        } else
+            return "Invalid";
     }
 }
