@@ -1,12 +1,7 @@
-import java.io.FileReader;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashSet;
 import java.util.Set;
-
-import javax.naming.NamingSecurityException;
-import javax.sql.rowset.spi.SyncResolver;
-import javax.swing.plaf.synth.SynthDesktopIconUI;
 
 public class AllInOne {
     public static void main(String [] args) {
@@ -78,7 +73,7 @@ public class AllInOne {
         System.out.println(numToEng(10));
         System.out.println(getSha256Hash("password123"));
         System.out.println(correctTitle("jOn SnoW, kINg IN thE noRth."));
-        System.out.println(hexLattice(20));
+        System.out.println(hexLattice(7));
     }
 
     // 1 solve
@@ -698,7 +693,6 @@ public class AllInOne {
             if (Math.abs((int) c.charAt(0) - (int) t.charAt(0)) == 2 && Math.abs((int) c.charAt(1) - (int) t.charAt(1)) == 1) {
                 return true;
             }
-
             if (Math.abs((int) c.charAt(1) - (int) t.charAt(1)) == 2 && Math.abs((int) c.charAt(0) - (int) t.charAt(0)) == 1) {
                 return true;
             }
@@ -716,7 +710,6 @@ public class AllInOne {
             if (Math.abs((int) c.charAt(0) - (int) t.charAt(0)) == Math.abs((int) c.charAt(1) - (int) t.charAt(1))) {
                 return true;
             }
-
             if (c.charAt(0) == t.charAt(0) || c.charAt(1) == t.charAt(1)) {
                 return true;
             }
@@ -758,14 +751,19 @@ public class AllInOne {
         String outputString = "";
         char[] firsChars = args[0].toCharArray();
         Set<Character> vow = new HashSet<>();
+        // vow in first word which is base
         for (char _let : firsChars) {
             if (_let == 'a' || _let == 'e' || _let == 'i' || _let == 'o' || _let == 'u' || _let == 'y') {
                 vow.add(_let);
             }
         }
 
+        // vow in later words comparison
+
+        // first circle on all later words
         for (String _str : args) {
             boolean flag = true;
+            // second circle on letters in each word
             for (char _let : _str.toCharArray()) {
                 if (_let == 'a' || _let == 'e' || _let == 'i' || _let == 'o' || _let == 'u' || _let == 'y') {
                     if (!vow.contains(_let)) {
@@ -774,6 +772,7 @@ public class AllInOne {
                     }
                 }
             }
+            // building output string
             if (flag) {outputString += _str + " ";}
         }
         return outputString;
@@ -811,25 +810,32 @@ public class AllInOne {
         String num = Integer.toString(n);
 
         int dCount = num.length();
-        
+
+        // for 1 length
         if (dCount == 1) {return d0_9[Integer.parseInt(num)];}
+        // for 2 length
         if ((dCount == 2) && (n < 20)) {return d10_19[Integer.parseInt(num.substring(1, 2))];}
-        if ((dCount == 2) && (num.charAt(1) == '0') && (n>19)) {return d20_90[Integer.parseInt(num.substring(0, 1))-1];} 
+        //for other 2 length
+        if ((dCount == 2) && (num.charAt(1) == '0') && (n>19)) {return d20_90[Integer.parseInt(num.substring(0, 1))-1];}
+        // for 3 length
         if (dCount == 3) {
             StringBuilder sb = new StringBuilder();
             int[] digits = new int[3];
             int k = 0;
+            // separating on each letter
             while (n != 0) {
                 digits[k] = n % 10;
                 n = n / 10;
                 k++;
             }
+            // creating ENG for hundred position
             sb.append(d0_9[digits[2]]).append(" hundred ");
             if (digits[1] == 1) {
                 int c = digits[1] + digits[2];
                 sb.append(d10_19[c]);
                 return sb.toString();
             }
+            // creating ENG for ten and one position
             if (digits[1] > 1)
                 sb.append(d20_90[digits[1] - 1]).append(" ");
             if (digits[0] > 0)
@@ -842,8 +848,10 @@ public class AllInOne {
     //48 solve
     private static String getSha256Hash(String msg) {
         String result = "";
+        // importing class
         MessageDigest md;
         try {
+            // added
             md = MessageDigest.getInstance("SHA-256");
             byte[] hashes = md.digest(msg.getBytes());
             for (int i = 0; i < hashes.length; i++) {
@@ -852,6 +860,7 @@ public class AllInOne {
                     result += 0;
                 result += hex;
             }
+            // обработка исключений исправить
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
@@ -863,21 +872,25 @@ public class AllInOne {
         String[] strings = str.split(" ");
         String output = "";
 
+        // first cycle for preparing and building output string
         for (int i = 0; i < strings.length; i++) {
             if (i > 0) {
                 output += " ";
             }
             String[] _strings = strings[i].split("-");
+
             for (int j = 0; j < _strings.length; j++) {
                 if (j > 0) {
                     output += "-";
                 }
+                // ignore special words
                 if (_strings[j].equalsIgnoreCase("and")
                         || _strings[j].equalsIgnoreCase("the")
                         || _strings[j].equalsIgnoreCase("of")
                         || _strings[j].equalsIgnoreCase("in")) {
                     output += _strings[j].toLowerCase();
                 } else {
+                    // uppercase for else each word
                     output += _strings[j].substring(0, 1).toUpperCase();
                     output += _strings[j].substring(1).toLowerCase();
                 }
@@ -891,6 +904,7 @@ public class AllInOne {
     private static String hexLattice(int n) {
         int i = 0;
         boolean isHex = false;
+        // aquare our numbers
         while (3 * i * (i + 1) + 1 <= n) {
             if (3 * i * (i + 1) + 1 == n)
                 isHex = true;
